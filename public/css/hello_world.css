@@ -1,0 +1,25 @@
+
+.pretty_header {
+
+	color: #990000;
+	text-decoration: underline;
+}
+
+.first_header	{
+
+	color: #ff8000;
+	text-decoration: underline;
+}
+
+body { background-color: #867979 }
+
+body {background-image:  url(/img/WhitePic.jpg);}
+body {background-repeat: no-repeat; }
+body {background-size: 100%;}
+
+
+
+
+ul { list-style: square; }
+
+body { font-style: italic; }
