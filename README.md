@@ -7,4 +7,3 @@
 - JavaScript and jQuery
 - Object orientated PHP
 
-'backticks around text makes it look like code'
