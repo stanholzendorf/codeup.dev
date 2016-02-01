@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Breaks and Continues</title>
+</head>
+<body>
+	<h3>Breaks and Continues</h3>
+	<script>
+		'use strict';
+		
+
+		do {
+
+			var random = Math.floor((Math.random()*50)+1);
+			
+			} while (random % 2 == 0);
+				console.log("Random odd number to skip is:" +random);
+
+
+		for (var i = 1; i <= 50; i++) {
+			if (i % 2 == 0) {
+
+				continue;
+			} else if (i == random) {
+				console.log("Skipping" +i)
+				continue;
+			}	
+			console.log("Here is an odd number:" +i);
+
+			
+   }
+
+
+
+	</script>
+
+</body>
+</html>
