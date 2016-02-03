@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Functions</title>
+</head>
+<body>
+	<h3>Functions</h3>
+	<script>
+		"use strict";
+
+		var myNameIs = 'Stan'; // todo: Fill in your name here.
+		var random = Math.floor((Math.random()*100)+1);
+
+// todo:
+// Create a function called 'sayHello' that takes a parameter 'name'.
+// When called, the function should log a message that says hello from the passed in name.
+
+// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+
+
+function sayHello(name) {
+		//var name = "myNameIs";
+		return "Hello from " +name ;
+}
+console.log(sayHello(myNameIs));
+
+
+
+// do not worry about the details of this line
+// just know that it generates a random number between 1 and 100
+
+
+function isOdd(number) {
+	return number = (number % 2 == 0) ? number + " - This Number is even!" : number +" - This Number is odd!";
+}
+console.log(isOdd(random));
+
+// todo:
+// Create a function called 'isOdd' that takes a number as a parameter.
+// The function should use the ternary operator to log a message.
+// The log should tell the number passed in and whether it is odd or not.
+
+// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
+
+// Extra
+// 1. Make a function that returns the sum(+) of 2 parameters
+// 2. Make a function that returns the difference (-) of 2 pararmeters
+// 3. Make a function that returns the product(*) of 2 parameters
+// 4. Make a function that returns the quotient(/) of parameters
+// 5. Make a function that returns the remainder (%) of 2 parameters
+
+function sum(sum_a, sum_b) {
+		 return (sum_a + sum_b);
+}
+console.log(sum(random, random));
+
+function difference(diff_a, diff_b) {
+		return (diff_a - diff_b);
+}
+console.log(difference(random, random));
+
+function product(pro_a, pro_b) {
+		 return (pro_a * pro_b);
+}
+console.log(product(random, random));
+
+function quotient(quo_a, qua_b) {
+		 return (quo_a / qua_b);
+}
+console.log(quotient(random, random));
+
+function remainder(rem_a, rem_b) {
+		 return (rem_a % rem_b);
+}
+console.log(remainder(random, random));
+
+	</script>
+</body>
+</html>
