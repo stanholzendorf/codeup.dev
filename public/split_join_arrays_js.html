@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>split_join_arrays_js</title>
+</head>
+<body>
+
+	<h3>SPLIT & JOIN</h3>
+	<script>
+		'use strict';
+		// todo:
+// Copy the array of planets you created in the last lesson.
+var planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune',];
+var cars = ['Volvo', 'BMW', 'Fiat', 'VW', 'Saab', 'Opel'];
+
+// todo: Join the planets array with pipes (|) to create a variable named 'planetsAsString'.
+var planetsAsString = planets.join(" | ");
+console.log(planetsAsString);
+
+// todo: Split the 'planetsAsString' variable by pipes (|) to create a variable named 'planetsAsArray'.
+var planetsAsArray = planetsAsString.split("|");
+console.log(planetsAsArray);
+		
+// Build a loop that iterates across an array and converts it into a string 
+// build your own join function
+
+ 
+
+// function join(array, delimeter)	{
+	
+// 	var string =""
+// 	array.forEach(function(element, index) {
+// 		string = string + element + delimeter;
+// 	});
+
+// 	 return string;
+// }
+// var result = join(cars, ",");
+// console.log(result);
+
+
+// cars.forEach(function (element, index, array) {
+
+
+// 	console.log(element + "\r\n,\r\n " );
+
+// });
+
+	</script>
+
+</body>
+</html>
