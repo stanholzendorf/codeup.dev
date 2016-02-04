@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>More Functions</title>
+</head>
+<body>
+	<h3>More Functions</h3>
+	<script>
+	'use strict';
+
+	var random = Math.floor((Math.random()*100)+1);
+
+function isOdd(number) {
+	return (number % 2 == 0) ? false : true;
+}
+console.log(isOdd(random));
+
+
+// function sum(sum_a, sum_b) { 
+// 		return (sum_a + sum_b);
+// }
+// console.log(sum(random, random));	
+
+function sum(sum_a, sum_b) {
+	if(isNaN(sum_a) || isNaN(sum_b)) {
+		alert ("Must be numbers")
+		return false	 
+	} 
+	return (sum_a + sum_b);
+}		 
+console.log(sum(random, random));
+
+		 
+function difference(diff_a, diff_b) {
+		return (diff_a - diff_b);
+}
+console.log(difference(random, random));
+
+function product(pro_a, pro_b) {
+		 return (pro_a * pro_b);
+}
+console.log(product(random, random));
+
+function quotient(quo_a, qua_b) {
+		 return (quo_a / qua_b);
+}
+console.log(quotient(random, random));
+
+function remainder(rem_a, rem_b) {
+		 return (rem_a % rem_b);
+}
+console.log(remainder(random, random));
+
+	</script>
+
+</body>
+</html>
