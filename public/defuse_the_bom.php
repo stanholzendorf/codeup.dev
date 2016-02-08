@@ -18,7 +18,7 @@
 
         function updateTimer()
         {
-            console.log('Inside update');
+            // console.log('Inside update');
             if (detonationTimer == 0) {
                 alert('EXTERMINATE!');
                 document.body.innerHTML = '';
