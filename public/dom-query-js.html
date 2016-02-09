@@ -39,12 +39,13 @@
             // TODO: Uncomment next line and get the main header element by id
             var mainHeader = document.getElementById('main-header');
             var changeHeader = function (event) {
-              mainHeader.innerHTML = "JavaScript is Cool";  
+              mainHeader.innerHTML = "JavaScript is Cool";
+              console.log(event);  
             }
 
             var button1 = document.getElementById('button1');
             button1.addEventListener('click', changeHeader, false);
-            console.log(event);
+            
             
             //console.log (mainHeader);
 
@@ -57,11 +58,12 @@
             var subHeader = document.getElementById('sub-header');
             var changeHeaderColor = function (event) {
                 subHeader.style.color = 'blue';
+                console.log(event);
             }
 
             var button2 = document.getElementById('button2');
             button2.addEventListener('click', changeHeaderColor, false);
-            console.log(event);
+            
 
             // TODO: Set the text color of subHeader to blue
             // subHeader.style.color = 'blue';
@@ -74,12 +76,13 @@
                         listItems[i].style.color = 'grey';
                      }   
                 
-                }  
+                } 
+                console.log(event); 
             }
 
             var button3 = document.getElementById('button3');
             button3.addEventListener('click', listColor, false);
-            console.log(event);
+            
             // console.log(listItems);
 
             // TODO: Set text color on every other list item to grey
@@ -99,11 +102,12 @@
                         listItems[i].style.color = 'blue';
                     }
                 }
+                console.log(event);
             }
             
             var button4 = document.getElementById('button4');
             button4.addEventListener('click', listColor2, false);
-            console.log(event);
+            
 
             // for (var i=0; i < listItems.length; i++) {
             //     var dbId = listItems[i].getAttribute("data-dbid");
@@ -116,11 +120,12 @@
             var subParagraphs = document.getElementsByClassName('sub-paragraph');
             var changeText = function (event) {
                 subParagraphs[0].innerText = 'Mission Accomplished!';
+                console.log(event);
             }
 
             var button5 = document.getElementById('button5');
             button5.addEventListener('click', changeText, false);
-            console.log(event);
+            
             //console.log(subParagraphs);
 
             // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
