@@ -2,16 +2,55 @@
 <html>
 <head>
     <style type="text/css">
+
+         body { background-color: grey; }   
+
         #map-canvas {
             width: 770px;
             height: 481px;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            margin: auto;
         }
+
+        h2 {
+
+           
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #F0F8FF;
+            text-decoration: underline;
+
+
+            
+
+        }
+
+        #infotext {
+
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #F0F8FF;
+        }
+
+
     </style>
     <title>The Map</title>
 </head>
 <body>
 
-    <h2>The best Italian in the World!!!</h2>
+    <h2>The best Italian Restaurant in the World!!!</h2>
+    <p id="infotext">Select marker for more information!</p>
     <!-- div to hold map -->
     <div id="map-canvas"></div>
 
@@ -75,13 +114,14 @@
 
         });
 
-        var contentText = '<h2>The meal a la Heino was invented by my friend Heino !!!</h2> <br> <p>One day (night/early morning) got to the restaurant a bit worse for wear and he barley cohernetly described how he wanted his Tortellini..... </p>';
+        var contentText = '<h3>Der gute Heino erfand Mein Lieblingsgericht durch Zufall!!!</h3> <img src="/img/Italian-flag-small.jpg"> <br> <p>One day (night/early morning) got to the restaurant a bit worse for wear and he barley cohernetly described how he wanted his Tortellini..... </p>';
 
 
         var markerInfo = new google.maps.InfoWindow({
 
             content: contentText,
             maxWidth: 300
+
         });
         marker.addListener('click', function() {
             markerInfo.open(map, marker);
