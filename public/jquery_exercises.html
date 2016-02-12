@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery-Stuff</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+<h1 id="FirstHeader" class="Headers">JQuery Exercise</h1>
+<p id="someText" class="codeup">Bacon ipsum dolor amet jerky brisket sirloin short ribs t-bone pork chop salami shank ham hock strip steak. Pastrami biltong brisket frankfurter jerky sirloin turducken pancetta landjaeger alcatra. Venison hamburger tongue pork belly pork loin short loin drumstick pork chop. Pancetta tongue bresaola picanha andouille cow, hamburger pastrami pig alcatra venison beef ribs cupim spare ribs. Meatball ribeye brisket doner landjaeger.
+
+Beef tail swine frankfurter salami jerky turkey hamburger porchetta pork belly rump shankle. Shankle chuck fatback, cupim hamburger pastrami salami leberkas ham hock. Corned beef ham sausage chicken beef prosciutto rump sirloin pork chop boudin ham hock capicola. Alcatra cupim shoulder shankle beef porchetta frankfurter. Tongue prosciutto tenderloin frankfurter, bacon venison short loin short ribs pork chop cow shankle jowl sausage. Fatback shankle pastrami, rump short loin t-bone alcatra sirloin ground round bresaola salami. Hamburger ham hock biltong pork jowl doner.</p>
+
+
+
+<ul id="FirstList" class="lists">
+	<li>First Item</li>
+	<li>Second Item</li>
+	<li>Third Item</li>
+	<li>Fourth Item</li>
+
+
+</ul>
+
+<ol id="secondList" class="codeup">
+
+	<li>First Item 2</li>
+	<li>Second Item 2</li>
+	<li>Third Item 2</li>
+	<li>Fourth Item 2</li>
+	
+
+
+
+</ol>
+
+
+<div id="TextBox1" class="codeup"><p>Nisi quisque vestibulum mauris, potenti senectus mauris at suspendisse, dis in sed ut porta nisl nibh. Odio a vestibulum consequat, mauris ornare, tincidunt diam nunc accumsan, suscipit rutrum integer, massa dapibus ultrices. Nulla mus a feugiat sit. Sollicitudin vel, cras est lacus luctus, vivamus placerat temporibus quam, vitae orci cursus sed velit sed. Sollicitudin massa. Dui amet ligula rhoncus sem wisi orci, nam arcu vestibulum dapibus, et libero nulla, eget dui quis morbi nullam suspendisse, mauris tincidunt et. Varius tempore a sodales eu sed. Turpis quisque sollicitudin. Non congue imperdiet urna fermentum, ante sodales wisi neque, vel nunc ipsum mattis lectus, senectus molestie. Lectus porta orci ornare integer ac consectetuer, erat dis leo tellus et, curabitur lectus, maecenas consectetuer erat sed in ipsum, ipsum quis nec phasellus ut placerat.</p></div>
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+	'use strict';
+
+$(document).ready(function() {
+
+// $('#FirstHeader');
+
+var goCodeup = $('.codeup');
+
+// goCodeup.css({
+
+// 	'border' : '1px solid',
+// 	'background-color' : 'grey',
+// 	'border-color' : 'yellow',
+// 	'color' : 'orange'
+// }) 
+
+
+$('li').css({
+
+	'font-size' : '20px'
+})
+
+
+var allOfit = $('h1, p, li');
+
+allOfit.css({
+
+	'background-color' : "orange"
+})
+
+var content = $('h1');
+	alert(content.html());
+    
+});
+
+
+</script>
+
+</body>
+</html>
