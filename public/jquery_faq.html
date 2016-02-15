@@ -5,18 +5,14 @@
 	<meta charset="utf-8">
 	<style type="text/css">
 
-	.invisible {
-
+	/*.invisible {
 		display: none;
-
-
-	};
+	};*/
 
 	
 
-
-
 	</style>
+
 </head>
 <body>
 
@@ -102,14 +98,15 @@
 
 $(document).ready(function() {
 
-	$('dd').addClass('invisible');
+	// $('dd').addClass('invisible');
+	
 
 
-	$('a').click(function(event){
-			event.preventDefault();
-			$('dd').toggleClass('invisible');
-	});
-	// $('dd').toggleClass('invisible')
+	// $('a').click(function(event){
+	// 		event.preventDefault();
+	// 		$('dd').toggleClass('invisible');
+	// });
+	
 
 
 	$('ul').each(function(index) {
@@ -119,13 +116,31 @@ $(document).ready(function() {
   	});
 
 
-	$('li').click(function(event) {
-		$(this).parent().addClass('invisible');
-	});
+	// $('li').click(function(event) {
+	// 	$(this).parent().addClass('invisible');
+	// });
 
+	// $('h3').click(function(event) {
+	// 	$(this).next().removeClass('invisible');
+	// });
+	$('dd').hide();
+	$('a').click(function(event){
+			event.preventDefault();
+			$('dd').fadeIn();
+
+			});
+
+
+	// $('li').click(function(event) {
+	// 	$(this).parent().hide();
+		
+	// 	});
+
+	// $('li').hide();
 	$('h3').click(function(event) {
-		$(this).next().removeClass('invisible');
-	});
+		$(this).next().fadeToggle()
+		
+		});
 
 });	
 
