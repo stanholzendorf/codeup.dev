@@ -126,7 +126,7 @@ $(document).ready(function() {
 	$('dd').hide();
 	$('a').click(function(event){
 			event.preventDefault();
-			$('dd').fadeIn();
+			$('dd').fadeToggle();
 
 			});
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
 		
 	// 	});
 
-	// $('li').hide();
+	$('ul').hide();
 	$('h3').click(function(event) {
 		$(this).next().fadeToggle()
 		
