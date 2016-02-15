@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>National Parks FAQ</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+
+	.invisible {
+
+		display: none;
+
+
+	};
+
+	
+
+
+
+	</style>
+</head>
+<body>
+
+<h1>Jquery FAQ</h1>
+<a href="#">Click to show answers</a>
+
+<dl>
+	<dt>What government agency oversees the National Park Service?</dt>
+	<dd>The National Park Service is a bureau of the Department of the Interior. Directly overseeing its operation is the Department's Assistant Secretary for Fish, Wildlife and Parks.</dd>
+	<br>
+
+	<dt>How many employees are in the National Park Service?</dt>
+	<dd>Permanent, temporary, and seasonal: Approximately 22,000 diverse professional and Volunteers in Parks: 221,000</dd>
+	<br>
+	<dt>How old is the National Park System?</dt>
+	<dd>The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an Act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. View the National Park System timeline.</dd>
+	<br>
+	<dt>What is the origin of the National Park Service arrowhead?</dt>
+	<dd>The arrowhead was authorized as the official National Park Service emblem by the Secretary of the Interior on July 20, 1951. The components of the arrowhead may have been inspired by key attributes of the National Park System, with the sequoia tree and bison representing vegetation and wildlife, the mountains and water representing scenic and recreational values, and the arrowhead itself representing historical and archeological values. Read more about the history of the arrowhead and other elements of NPS visual design.</dd>
+	<br>
+	<dt>How many areas are in the National Park System?</dt>
+	<dd>The system includes 409 areas covering more than 84 million acres in every state, the District of Columbia, American Samoa, Guam, Puerto Rico, and the Virgin Islands. These areas include national parks, monuments, battlefields, military parks, historical parks, historic sites, lakeshores, seashores, recreation areas, scenic rivers and trails, and the White House. Learn more about national park designations. See the complete list of National Park Service units and affiliated areas by type and number.</dd>
+	<br>
+	<dt>What is the largest national park site? Smallest?</dt>
+	<dd>Largest: Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres. Smallest: Thaddeus Kosciuszko National Memorial, PA, at 0.02 acres </dd>
+	<br>
+	<dt>How many people visit the national parks?</dt>
+	<dd>Total recreation visitors to the national parks in 2014: 292,800,082</dd>
+	<br>
+	<dt>What is the most-visited national park?</dt>
+	<dd>Refer to outside source.</dd>
+	<br>
+	<dt>What is the National Park Service budget?</dt>
+	<dd>FY 2014 Enacted: $2.98 billion. FY 2015 Request: $3.65 billion</dd>
+	<br>
+	<dt>How do I obtain a park pass?</dt>
+	<dd>You can obtain park passes by visiting your nearest park site. Most sites have passes available; we recommend calling a park prior to your visit. Learn more about the America the Beautiful - National Parks and Federal Recreation Lands Pass.</dd>
+
+
+
+</dl>
+<h3>National Park Name</h3>
+<ul>
+	
+	<li>Fact 1</li>
+	<li>Fact 2</li>
+	<li>Fact 3</li>
+	<li>Fact 4</li>
+
+
+
+</ul>
+<h3>National Park Name 2</h3>
+<ul>
+	
+	<li>Fact 1</li>
+	<li>Fact 2</li>
+	<li>Fact 3</li>
+	<li>Fact 4</li>
+
+
+
+</ul>
+
+<h3>National Park Name 3</h3>
+<ul>
+	
+	<li>Fact 1</li>
+	<li>Fact 2</li>
+	<li>Fact 3</li>
+	<li>Fact 4</li>
+
+
+
+</ul>
+
+
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>
+	'use strict';
+
+
+$(document).ready(function() {
+
+	$('dd').addClass('invisible');
+
+
+	$('a').click(function(event){
+			event.preventDefault();
+			$('dd').toggleClass('invisible');
+	});
+	// $('dd').toggleClass('invisible')
+
+
+	$('ul').each(function(index) {
+
+		$(this).children().first().css('font-weight', 'bold');
+
+  	});
+
+
+	$('li').click(function(event) {
+		$(this).parent().addClass('invisible');
+	});
+
+	$('h3').click(function(event) {
+		$(this).next().removeClass('invisible');
+	});
+
+});	
+
+
+
+
+
+</script>
+
+</body>
+</html>
