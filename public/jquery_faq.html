@@ -52,8 +52,8 @@
 	<dd>You can obtain park passes by visiting your nearest park site. Most sites have passes available; we recommend calling a park prior to your visit. Learn more about the America the Beautiful - National Parks and Federal Recreation Lands Pass.</dd>
 
 
-
 </dl>
+<div><img src="/img/speech-bubble-bye-smiley-emoticon.gif" alt="Bye"></div>
 <h3>National Park Name</h3>
 <ul>
 	
@@ -91,6 +91,7 @@
 
 
 
+
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
 	'use strict';
@@ -108,7 +109,7 @@ $(document).ready(function() {
 	// });
 	
 
-
+	$('div').hide();
 	$('ul').each(function(index) {
 
 		$(this).children().first().css('font-weight', 'bold');
@@ -125,10 +126,15 @@ $(document).ready(function() {
 	// });
 	$('dd').hide();
 	$('a').click(function(event){
-			event.preventDefault();
-			$('dd').fadeToggle();
+		event.preventDefault();
+		$('dd').slideToggle(1000, function(){
+			$('div').fadeToggle(2000, function(){
+					alert('Now please check out the Facts!');
 
 			});
+		});
+
+	});
 
 
 	// $('li').click(function(event) {
@@ -138,11 +144,12 @@ $(document).ready(function() {
 
 	$('ul').hide();
 	$('h3').click(function(event) {
-		$(this).next().fadeToggle()
+		$(this).next().slideToggle()
 		
 		});
 
 });	
+
 
 
 
