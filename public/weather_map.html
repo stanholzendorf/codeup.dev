@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather_API</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+	<style type="text/css">
+
+	#mainContainer {
+
+		height: 300px;
+		width: 608px;
+		margin: auto;
+		background-color: skyblue;
+		border:2px solid black;
+
+
+	}
+
+
+
+	#day1 {
+
+		float:left;
+    	width:200px;
+    	background-color: silver;
+    	text-align: center;
+    	border:1px solid black;
+    	margin: auto;
+  		
+	}
+
+	#day2 {
+
+		float:left;
+    	width:200px;
+    	background-color: silver;
+    	text-align: center;
+    	border:1px solid black;
+    	margin: auto;
+  		
+	}
+
+	#day3 {
+
+		float:left;
+    	width:200px;
+    	background-color: silver;
+    	text-align: center;
+    	border:1px solid black;
+    	margin: auto;
+  		
+	}
+
+	</style>
+</head>
+<body>
+<div id="mainContainer" class="horizontal">
+	
+
+	<h3>Weather Application</h3>
+	<h5>San Antonio</h5>
+	<div id="day1" class="horizontal"></div><div id="day2" class="horzizontal"></div><div id="day3" class="horizontal"></div>
+
+</div>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+(function() {
+	
+	'use strict';
+
+	function buildContent(weatherData) {
+		console.log(weatherData);
+
+		$('#day1').html("");
+		$('#day2').html("");
+		$('#day3').html("");
+
+		weatherData.list.forEach(function(element, index, array) {
+
+			var dataInput = "";
+			dataInput += "<div>";
+				dataInput += "<h4>" + element.temp.day + " / " + element.temp.eve + "</h4>"
+				dataInput += "<img src ='http://openweathermap.org/img/w/" + element.weather[0].icon + ".png'>";
+				dataInput += "<p>" + element.weather[0].description + "</p>";
+				dataInput += "<p>" + "Humidity: " + element.humidity + "</p>";
+				dataInput += "<p>" + "Wind Speed: " + element.speed + "</p>";
+				dataInput += "<p>" + "Pressure: " + element.pressure + "</p>";
+
+			$('#day' + (index + 1)).append(dataInput);
+		})
+		
+	}
+
+	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206", {
+	    APPID: "1382b75d19430a5439132b94779f885d",
+	    id:     4726206,
+	    cnt: 3,
+	    units: "imperial"
+
+    }).done(buildContent);
+
+})();
+</script>
+
+</body>
+</html>
