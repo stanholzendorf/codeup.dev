@@ -1,7 +1,4 @@
-<!-- <?php
-var_dump($_GET);
-var_dump($_POST);
-?> -->
+
 
 <!DOCTYPE html>
 <html>
@@ -91,9 +88,9 @@ var_dump($_POST);
 		 contentString += "<h3>" + content.title + "</h3>";
 		 contentString += "<p>" + content.content + "</p>";
 		 contentString += "<ui>";
-		  contentString += "<li>" + content.categories.join(', ') + "</li>";
+		  contentString += "<li>" + content.categories.join(' • ') + "</li>";
 		 contentString += "</ul>";
-		 contentString += "<p>" + content.date + "</p>";
+		 contentString += "<br>" + "<p>" + content.date + "</p>";
 		contentString += "</div>"
 		
 		$('#posts').append(contentString);  
