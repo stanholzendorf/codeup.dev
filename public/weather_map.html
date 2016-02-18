@@ -8,62 +8,111 @@
 
 	#mainContainer {
 
-		height: 300px;
-		width: 608px;
+		height: 315px;
+		width: 630px;
 		margin: auto;
 		background-color: skyblue;
 		border:2px solid black;
 
 
+
 	}
 
+	.center {
+
+		text-align: center;
+
+	}	
 
 
-	#day1 {
+	#allDays {
+
+
+		text-align: center;	
+		background-color: black;
+		margin: 0 auto;
+
+	}
+
+	.dayBox {
 
 		float:left;
-    	width:200px;
+		padding: 0px 43px;
     	background-color: silver;
     	text-align: center;
     	border:1px solid black;
-    	margin: auto;
+    	position: relative;
+    	width: 33.3333%;
   		
 	}
 
-	#day2 {
+	
 
-		float:left;
-    	width:200px;
-    	background-color: silver;
-    	text-align: center;
-    	border:1px solid black;
-    	margin: auto;
-  		
-	}
+	 #map-canvas {
+            width: 770px;
+            height: 353px;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
 
-	#day3 {
+            margin: auto;
+        }
 
-		float:left;
-    	width:200px;
-    	background-color: silver;
-    	text-align: center;
-    	border:1px solid black;
-    	margin: auto;
-  		
-	}
+        
+
+        #inputSubmit {
+
+        	
+        	/*height: 70px;
+			width: 650px;*/
+			margin: auto;
+			padding: 15px 0px;
+			
+        	
+        }
+
+        #lat {
+
+        	height: 30px;
+			width: 180px;
+        }
+
+        #lng {
+
+        	height: 30px;
+        	width: 180px;
+        }
+
+        #SubmitCoor {
+
+        	padding: 5px 10px;
+        }
 
 	</style>
 </head>
 <body>
-<div id="mainContainer" class="horizontal">
+<div class="center">
+	<div id="mainContainer" class="horizontal">
 	
 
-	<h3>Weather Application</h3>
-	<h5>San Antonio</h5>
-	<div id="day1" class="horizontal"></div><div id="day2" class="horzizontal"></div><div id="day3" class="horizontal"></div>
+		<h3>Weather Application</h3>
+		<h5 id="cityName"></h5>
+		<div id="day1" class="dayBox"></div>
+		<div id="day2" class="dayBox"></div>
+		<div id="day3" class="dayBox"></div>
 
+	</div>
+	<div id="inputSubmit">
+			<input type="text" id="lat" placeholder="Type in Latitude">
+			<input type="text" id="lng" placeholder="Type in Longitude">
+		<button id="SubmitCoor" class="btn btn-info btn-lg">Submit new coordiantes</button>
+	</div>
+	<div id="map-canvas"></div>
 </div>
+
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTu-B8lvFSgXab5owUPbaSJ_LOsDY2WU"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 <script type="text/javascript">
 (function() {
@@ -76,6 +125,7 @@
 		$('#day1').html("");
 		$('#day2').html("");
 		$('#day3').html("");
+		$('#cityName').html("");
 
 		weatherData.list.forEach(function(element, index, array) {
 
@@ -89,17 +139,167 @@
 				dataInput += "<p>" + "Pressure: " + element.pressure + "</p>";
 
 			$('#day' + (index + 1)).append(dataInput);
-		})
+			$('#cityName').text(weatherData.city.name);
+		});
 		
 	}
 
-	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206", {
+	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
 	    APPID: "1382b75d19430a5439132b94779f885d",
-	    id:     4726206,
+	    id:     2947444,
 	    cnt: 3,
 	    units: "imperial"
 
     }).done(buildContent);
+
+    $('#SubmitCoor').click(function(event){
+
+    	var latCo = $('#lat').val();
+    	var lngCo = $('#lng').val();
+    	$('#lat').text("");
+    	$('#lng').text("");
+
+
+    	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
+	    APPID: "1382b75d19430a5439132b94779f885d",
+	    lat: latCo,
+	    lon: lngCo,
+	    cnt: 3,
+	    units: "imperial"
+
+    		}).done(buildContent);
+
+    	function adjustLocation() {
+
+    		var getLocation = new google.maps.Geocoder();
+    		var location = {lat: parseFloat(latCo), lng: parseFloat(lngCo)}
+    		console.log(location);
+    		getLocation.geocode({"location": location }, function(results, status) {
+    			if (status == google.maps.GeocoderStatus.OK) {
+    				map.setCenter(results[0].geometry.location);
+    			}else {
+    				alert("Geocoding was not successful - STATUS: " + status);
+    			}
+
+    			var original = { lat : parseFloat(latCo), lng : parseFloat(lngCo)};
+
+        			var marker = new google.maps.Marker({
+            			position: original,
+            			map: map,
+            			draggable: true
+
+        			});		
+
+
+            		marker.addListener('dragend', function(event) {
+
+         				var lat = event.latLng.lat();
+         				var lng = event.latLng.lng();
+         				console.log(lat);
+         				console.log(lng);
+
+         				$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
+	    				APPID: "1382b75d19430a5439132b94779f885d",
+	    				lat: lat,
+	    				lon: lng,
+	    				cnt: 3,
+	    				units: "imperial"
+
+    					}).done(buildContent);	
+
+
+        			});	
+
+
+
+
+    		});
+
+    	} adjustLocation();
+
+
+
+
+
+    });
+
+    // ---------------------Adding the MAP--------------------
+    
+
+    var getLocation = new google.maps.Geocoder();
+
+        // The address for the map
+
+        var address = "Enge G. 9, 71032 Böblingen, Germany"
+
+        // Invoking the method
+
+        getLocation.geocode({"address": address }, function(results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location.lat());
+                console.log(results[0].geometry.location.lng());
+            } else {
+                alert("Geocoding was not successful - STATUS: " + status)
+            }
+        } );
+
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 12,
+
+            // This sets the center of the map at our location
+            center: {
+                
+                lat:  12345678,
+                lng: -9.8765431
+            },
+
+            // Map Type
+
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        };
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+         // Create LAT / LONG Variable
+        var original = { lat : 48.6844319, lng : 9.015014199999996};
+
+        var marker = new google.maps.Marker({
+            position: original,
+            map: map,
+            draggable: true
+
+        });
+
+       
+
+
+         marker.addListener('dragend', function(event) {
+
+         	var lat = event.latLng.lat();
+         	var lng = event.latLng.lng();
+         	console.log(lat);
+         	console.log(lng);
+
+         	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
+	    		APPID: "1382b75d19430a5439132b94779f885d",
+	    		lat: lat,
+	    		lon: lng,
+	    		cnt: 3,
+	    		units: "imperial"
+
+    		}).done(buildContent);
+            
+        });
+
+        
+
+    
 
 })();
 </script>
