@@ -6,6 +6,13 @@
 
 	<style type="text/css">
 
+
+	body {
+
+		background: url(img/cloud-hd-backgrounds.jpg);
+
+	}
+
 	#mainContainer {
 
 		height: 315px;
@@ -14,8 +21,6 @@
 		background-color: skyblue;
 		border:2px solid black;
 
-
-
 	}
 
 	.center {
@@ -23,7 +28,6 @@
 		text-align: center;
 
 	}	
-
 
 	#allDays {
 
@@ -46,11 +50,9 @@
   		
 	}
 
-	
-
 	 #map-canvas {
             width: 770px;
-            height: 353px;
+            height: 345px;
             top:0;
             bottom: 0;
             left: 0;
@@ -59,34 +61,34 @@
             margin: auto;
         }
 
-        
-
-        #inputSubmit {
+      #inputSubmit {
 
         	
         	/*height: 70px;
 			width: 650px;*/
 			margin: auto;
-			padding: 15px 0px;
+			padding: 8px 0px;
 			
         	
         }
 
-        #lat {
+      #lat {
 
         	height: 30px;
 			width: 180px;
         }
 
-        #lng {
+      #lng {
 
         	height: 30px;
         	width: 180px;
         }
 
-        #SubmitCoor {
+      #SubmitCoor {
 
         	padding: 5px 10px;
+        	color: black;
+        	background-color: silver;
         }
 
 	</style>
@@ -108,8 +110,10 @@
 			<input type="text" id="lng" placeholder="Type in Longitude">
 		<button id="SubmitCoor" class="btn btn-info btn-lg">Submit new coordiantes</button>
 	</div>
+	<h4>Alternatively use the map and maker to adjust the location!!</h4>
 	<div id="map-canvas"></div>
 </div>
+
 
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTu-B8lvFSgXab5owUPbaSJ_LOsDY2WU"></script>
@@ -117,7 +121,10 @@
 <script type="text/javascript">
 (function() {
 	
-	'use strict';
+'use strict';
+var markerglobal;
+var latCo = $('#lat').val();
+var lngCo = $('#lng').val();
 
 	function buildContent(weatherData) {
 		console.log(weatherData);
@@ -137,12 +144,12 @@
 				dataInput += "<p>" + "Humidity: " + element.humidity + "</p>";
 				dataInput += "<p>" + "Wind Speed: " + element.speed + "</p>";
 				dataInput += "<p>" + "Pressure: " + element.pressure + "</p>";
-
+			dataInput +="</div>";	
 			$('#day' + (index + 1)).append(dataInput);
 			$('#cityName').text(weatherData.city.name);
 		});
 		
-	}
+	};
 
 	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
 	    APPID: "1382b75d19430a5439132b94779f885d",
@@ -152,76 +159,79 @@
 
     }).done(buildContent);
 
-    $('#SubmitCoor').click(function(event){
-
-    	var latCo = $('#lat').val();
-    	var lngCo = $('#lng').val();
+   $('#SubmitCoor').click(function(event){
+    	latCo = $('#lat').val();
+    	lngCo = $('#lng').val();
     	$('#lat').text("");
     	$('#lng').text("");
 
-
     	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
-	    APPID: "1382b75d19430a5439132b94779f885d",
-	    lat: latCo,
-	    lon: lngCo,
-	    cnt: 3,
-	    units: "imperial"
+		    APPID: "1382b75d19430a5439132b94779f885d",
+		    lat: latCo,
+		    lon: lngCo,
+		    cnt: 3,
+		    units: "imperial"
+
+    	}).done(buildContent);	
+    	adjustLocation();
+    });
+
+   	function adjustLocation() {
+
+   		markerglobal.setMap(null);
+    	var getLocation = new google.maps.Geocoder();
+    	var location = {lat: parseFloat(latCo), lng: parseFloat(lngCo)}
+    	console.log(location);
+    		
+    	getLocation.geocode({"location": location }, function(results, status) {
+    		if (status == google.maps.GeocoderStatus.OK) {
+    			map.setCenter(results[0].geometry.location);
+    		} else {
+    			alert("Geocoding was not successful - STATUS: " + status);
+    		};
+    	});
+
+    	var original = { lat : parseFloat(latCo), lng : parseFloat(lngCo)};
+
+        markerglobal = new google.maps.Marker({
+         	position: original,
+            map: map,
+            draggable: true
+
+        });
+
+        markerglobal.addListener('dragend', function(event) {
+
+         	var lat = event.latLng.lat();
+         	var lng = event.latLng.lng();
+         	console.log(lat);
+         	console.log(lng);
+
+         	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
+		    	APPID: "1382b75d19430a5439132b94779f885d",
+		    	lat: lat,
+		    	lon: lng,
+		    	cnt: 3,
+		    	units: "imperial"
 
     		}).done(buildContent);
 
-    	function adjustLocation() {
-
-    		var getLocation = new google.maps.Geocoder();
-    		var location = {lat: parseFloat(latCo), lng: parseFloat(lngCo)}
-    		console.log(location);
-    		getLocation.geocode({"location": location }, function(results, status) {
-    			if (status == google.maps.GeocoderStatus.OK) {
-    				map.setCenter(results[0].geometry.location);
-    			}else {
-    				alert("Geocoding was not successful - STATUS: " + status);
-    			}
-
-    			var original = { lat : parseFloat(latCo), lng : parseFloat(lngCo)};
-
-        			var marker = new google.maps.Marker({
-            			position: original,
-            			map: map,
-            			draggable: true
-
-        			});		
+    		var point = markerglobal.getPosition();
+    		map.setCenter(point);	
 
 
-            		marker.addListener('dragend', function(event) {
+        });	
 
-         				var lat = event.latLng.lat();
-         				var lng = event.latLng.lng();
-         				console.log(lat);
-         				console.log(lng);
+            		
 
-         				$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
-	    				APPID: "1382b75d19430a5439132b94779f885d",
-	    				lat: lat,
-	    				lon: lng,
-	    				cnt: 3,
-	    				units: "imperial"
+    }
+    	
+   
+    	
 
-    					}).done(buildContent);	
+    
+    
 
-
-        			});	
-
-
-
-
-    		});
-
-    	} adjustLocation();
-
-
-
-
-
-    });
 
     // ---------------------Adding the MAP--------------------
     
@@ -260,7 +270,7 @@
 
             // Map Type
 
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            mapTypeId: google.maps.MapTypeId.DEFAULT
         };
 
         // Render the map
@@ -269,7 +279,7 @@
          // Create LAT / LONG Variable
         var original = { lat : 48.6844319, lng : 9.015014199999996};
 
-        var marker = new google.maps.Marker({
+        markerglobal = new google.maps.Marker({
             position: original,
             map: map,
             draggable: true
@@ -279,7 +289,7 @@
        
 
 
-         marker.addListener('dragend', function(event) {
+         markerglobal.addListener('dragend', function(event) {
 
          	var lat = event.latLng.lat();
          	var lng = event.latLng.lng();
@@ -294,6 +304,11 @@
 	    		units: "imperial"
 
     		}).done(buildContent);
+
+    		
+    		var point = markerglobal.getPosition();
+    		map.setCenter(point);
+    		
             
         });
 
