@@ -162,8 +162,8 @@ var lngCo = $('#lng').val();
    $('#SubmitCoor').click(function(event){
     	latCo = $('#lat').val();
     	lngCo = $('#lng').val();
-    	$('#lat').text("");
-    	$('#lng').text("");
+    	$('#lat').val(""); //val()
+    	$('#lng').val("");
 
     	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
 		    APPID: "1382b75d19430a5439132b94779f885d",
@@ -225,22 +225,14 @@ var lngCo = $('#lng').val();
             		
 
     }
-    	
-   
-    	
-
-    
-    
-
-
-    // ---------------------Adding the MAP--------------------
+ // ---------------------Adding the MAP--------------------
     
 
     var getLocation = new google.maps.Geocoder();
 
         // The address for the map
 
-        var address = "Enge G. 9, 71032 Böblingen, Germany"
+    var address = "Enge G. 9, 71032 Böblingen, Germany"
 
         // Invoking the method
 
@@ -271,7 +263,7 @@ var lngCo = $('#lng').val();
             // Map Type
 
             mapTypeId: google.maps.MapTypeId.DEFAULT
-        };
+        	};
 
         // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
