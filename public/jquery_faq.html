@@ -98,7 +98,7 @@
 
 
 $(document).ready(function() {
-
+	// var ddVisible = false;
 	// $('dd').addClass('invisible');
 	
 
@@ -127,13 +127,12 @@ $(document).ready(function() {
 	$('dd').hide();
 	$('a').click(function(event){
 		event.preventDefault();
+
 		$('dd').slideToggle(1000, function(){
 			$('div').fadeToggle(2000, function(){
-					alert('Now please check out the Facts!');
-
+				console.log('Now please check out the Facts!');
 			});
 		});
-
 	});
 
 
@@ -144,9 +143,8 @@ $(document).ready(function() {
 
 	$('ul').hide();
 	$('h3').click(function(event) {
-		$(this).next().slideToggle()
-		
-		});
+		$(this).next().slideToggle()	
+	});
 
 });	
 
