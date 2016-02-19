@@ -162,7 +162,7 @@ var lngCo = $('#lng').val();
    $('#SubmitCoor').click(function(event){
     	latCo = $('#lat').val();
     	lngCo = $('#lng').val();
-    	$('#lat').val(""); //val()
+    	$('#lat').val(""); 
     	$('#lng').val("");
 
     	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
@@ -206,8 +206,11 @@ var lngCo = $('#lng').val();
          	var lng = event.latLng.lng();
          	console.log(lat);
          	console.log(lng);
-
-         	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
+            
+            $('#lat').val(lat); 
+            $('#lng').val(lng);
+         	
+            $.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
 		    	APPID: "1382b75d19430a5439132b94779f885d",
 		    	lat: lat,
 		    	lon: lng,
@@ -287,6 +290,9 @@ var lngCo = $('#lng').val();
          	var lng = event.latLng.lng();
          	console.log(lat);
          	console.log(lng);
+
+            $('#lat').val(lat); 
+            $('#lng').val(lng);
 
          	$.get("http://api.openweathermap.org/data/2.5/forecast/daily?", {
 	    		APPID: "1382b75d19430a5439132b94779f885d",
