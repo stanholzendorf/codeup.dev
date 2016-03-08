@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MoreAnime</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		html, body {
+            margin: 0px;
+            padding: 0;
+            background-image: url("/img/maxresdefault_bond.jpg");
+            background-size : 100% auto;
+        }
+
+        #HeMan {
+
+        	position: relative;
+        }
+
+
+
+	</style>
+</head>
+<body>
+<img id="HeMan" src="/img/He-Man.jpg">
+<p>
+	<button id="btn-animate">Animate</button>
+</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	
+$(document).ready(function() {
+
+	'use strict';
+
+	$('#btn-animate').click(function(event){
+		$('#HeMan').animate({
+
+			left: '+=200px'
+
+		
+		}, 300); 
+	});
+
+
+
+
+});
+</script>
+
+
+
+</body>
+</html>
