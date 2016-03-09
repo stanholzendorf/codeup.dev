@@ -1,6 +1,9 @@
 <?php
 session_start();
+include_once 'functions.php';
 
+$username = inputGet('username');
+$password = inputGet('password');
 
 
 if (! isset($_SESSION['logged_in_user'])) {

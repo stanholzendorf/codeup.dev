@@ -1,11 +1,20 @@
 <?php
-var_dump($_POST);
+
+require_once 'functions.php';
+// $inputs = [];
+// foreach($_POST as $key => $input) {
+//     $inputs($key) = escape($input);
+// }
+
+// var_dump($_POST);
+
 session_start();
 
+// require_once 'functions.php';
 
-
-$username = isset($_POST['username']) ? $_POST['username'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+// $_POST = escape('username');
+$username = inputGet('username');
+$password = inputGet('password');
 
 
 
@@ -21,16 +30,16 @@ if (isset($_SESSION['logged_in_user'])) {
     session_valid_id($loggedInUser);
 }
 
-else if ($username == 'guest' && $password == 'password') {
+else if ($username == escape('guest') && $password == 'password') {
     $_SESSION['logged_in_user'] = $username;
     session_valid_id($loggedInUser);
-	// header("Location: //codeup.dev/authorized.php");
-	// die();
 
-} else if ($password != '' || $username != ''){
+} else if ($password != '' || escape($username) != ''){
 	echo "login Info incorrect!!";
     die();
 }
+
+
 
 
 ?>
@@ -40,6 +49,9 @@ else if ($username == 'guest' && $password == 'password') {
     <title>LOGIN EXERCISE</title>
 </head>
 <body>
+    <?php include_once 'header.php';?>
+    <?php include_once 'navbar.php';?>
+    
     <form method="POST">
         <label>Username</label>
         <input type="text" name="username"><br>
@@ -47,5 +59,6 @@ else if ($username == 'guest' && $password == 'password') {
         <input type="password" name="password"><br>
         <input type="submit">
     </form>
+    <?php include_once 'footer.php';?>
 </body>
 </html>
