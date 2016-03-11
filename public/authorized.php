@@ -30,6 +30,8 @@ if (! Auth::check() == true)
 	<title>Authorized</title>
 </head>
 <body>
+<?php include_once 'header.php';?>
+<?php include_once 'navbar.php';?>
 
 <h1>"Authorized"</h1>
 <br>
@@ -37,7 +39,9 @@ if (! Auth::check() == true)
 <?php echo $username . " is logged in!!"; ?> 
 </h3>
 <br>
-<a href="//codeup.dev/log-out.php">LogOut!</a>
+<!-- <a href="//codeup.dev/log-out.php">LogOut!</a> -->
+<a href="//codeup.dev/log-out.php"><button>LogOut!</button></a>
+<?php include_once 'footer.php';?>
 
 
 
