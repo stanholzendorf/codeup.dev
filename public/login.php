@@ -1,6 +1,8 @@
 <?php
 
-require_once 'functions.php';
+// require_once 'functions.php';
+require_once '../Input.php';
+require_once '../Auth.php';
 // $inputs = [];
 // foreach($_POST as $key => $input) {
 //     $inputs($key) = escape($input);
@@ -13,29 +15,40 @@ session_start();
 // require_once 'functions.php';
 
 // $_POST = escape('username');
-$username = inputGet('username');
-$password = inputGet('password');
+$username = Input::get('username');
+$password = Input::get('password');
+
+// $username = inputget('username');
+// $password = inputget('password');
 
 
 
-$loggedInUser = session_id();
+// $loggedInUser = session_id();
 
-function session_valid_id($loggedInUser)
+// function session_valid_id($loggedInUser)
+// {
+//     header("Location: //codeup.dev/authorized.php");
+//     die();
+// }
+
+// if (isset($_SESSION['logged_in_user'])) {
+//     session_valid_id($loggedInUser);
+// }
+
+// else if ($username == ('guest') && $password == 'password') {
+//     $_SESSION['logged_in_user'] = $username;
+//     session_valid_id($loggedInUser);
+
+// } else if ($password != '' || ($username) != ''){
+// 	echo "login Info incorrect!!";
+//     die();
+// }
+
+Auth::attempt($username, $password);
+
+if (Auth::check() == true)
 {
     header("Location: //codeup.dev/authorized.php");
-    die();
-}
-
-if (isset($_SESSION['logged_in_user'])) {
-    session_valid_id($loggedInUser);
-}
-
-else if ($username == escape('guest') && $password == 'password') {
-    $_SESSION['logged_in_user'] = $username;
-    session_valid_id($loggedInUser);
-
-} else if ($password != '' || escape($username) != ''){
-	echo "login Info incorrect!!";
     die();
 }
 
