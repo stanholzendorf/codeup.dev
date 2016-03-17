@@ -41,7 +41,7 @@ $password = Input::get('password');
 
 // } else if ($password != '' || ($username) != ''){
 // 	echo "login Info incorrect!!";
-//     die();
+//  die();
 // }
 
 Auth::attempt($username, $password);
