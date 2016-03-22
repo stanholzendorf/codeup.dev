@@ -18,6 +18,7 @@ $createtable = 'CREATE TABLE national_parks(
 				location VARCHAR(150) NOT NULL,
 				date_established DATE NOT NULL,
 				area_in_acres FLOAT(8,2) UNSIGNED NOT NULL,
+				description VARCHAR(450) NOT NULL,
 				PRIMARY KEY(id)
 				)';
 $dbc->exec($createtable);

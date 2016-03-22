@@ -30,7 +30,7 @@ class Input
         if (self::has($key) == true) {
         return $_REQUEST[$key];
     }   else {
-            return null;
+            return $default;
     }
     }
     
