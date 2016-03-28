@@ -3,17 +3,27 @@
 class Log 
 {
 	
-	public $filename;
-	public $handle;
+	private $filename;
+	private $handle;
+
+
+	protected function setfilenameString()
+	{
+		$date = date("y-m-d");
+    	$time = date("h:i:s");
+		$this->filename = __DIR__ . '/public/logs/' . $prefix .  $date . '.log';
+	}
+
 
 	public function __construct($prefix = "log.")
 
-	{	$date = date("y-m-d");
-    	$time = date("h:i:s");
-
-		$this->filename = __DIR__ . '/public/logs/' . $prefix .  $date . '.log';
-    	$this->handle = fopen($this->filename, 'a');
-
+	{	
+		$this->setfilenameString();
+    	if (!touch($this->filename) && !is_writable($this->filename)) {
+			echo "Not possible!";
+		} else {
+    		$this->handle = fopen($this->filename, 'a');
+		}
 	}
 
 	public function ____destruct()

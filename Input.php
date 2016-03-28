@@ -42,4 +42,66 @@ class Input
     // later in the curriculum.                                              //
     ///////////////////////////////////////////////////////////////////////////
     private function __construct() {}
+
+public static function getString($key)
+{
+    $value = self::get($key);
+
+    if(($value == null || is_resource($value)) || 
+       (is_numeric($value) || is_bool($value)) ||
+       is_array($value)) {
+        throw new Exception("THE VALUE $key NEEDS TO BE A STRING!!!!");
+    } else {
+        return $value;
+    }
 }
+
+// public static function getString($key)
+// {
+//     $value = self::get($key);
+//     if(ctype_digit($value) || $value == null) {
+//         throw new Exception('The value needs to be a string');
+//     } 
+//     else if (!ctype_alnum($value))
+
+//     {
+//         throw new Exception('The value needs to be a string');
+//     }
+//     return $value;
+// }
+
+public static function getNumber($key)
+{
+    $value = self::get($key);
+    if(!is_numeric($value) || $value == null) {
+        throw new Exception("THE VALUE $key NEEDS TO BE NUMERIC!!!");
+    }
+    return (float) $value;
+}
+
+public static function getDate($key)
+{
+    $value = self::get($key);
+    $validDate = date_create($value);
+
+    if($validDate) {
+        return $validDate;
+    } else {
+        throw new Exception('The value DATE needs a valid Date!');
+    }
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

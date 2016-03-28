@@ -7,6 +7,7 @@ DEFINE('DB_HOST', 'mysql:host=127.0.0.1;');
 
 require '../db_connect.php';
 require '../Input.php';
+$errorMessages = [];
 
 $page = Input::get('page', 1);
 $limit = 4;
@@ -18,20 +19,63 @@ if(Input::has('name') && Input::get('name') !=''
   && Input::has('area_in_acres') && Input::get('area_in_acres') !=''
   && Input::has('description') && Input::get('description') !=''  
 ){
-  $parkname = Input::get('name');
-  $parklocation = Input::get('location');
-  $parkdate = Input::get('date_established');
-  $parksize = Input::get('area_in_acres');
-  $parkdescr = Input::get('description');
-  $insert = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
-  $stmt = $dbc->prepare($insert);
-  $stmt->bindValue(':name', $parkname, PDO::PARAM_STR);
-  $stmt->bindValue(':location', $parklocation, PDO::PARAM_STR);
-  $stmt->bindValue(':date_established', $parkdate, PDO::PARAM_STR);
-  $stmt->bindValue(':area_in_acres', $parksize, PDO::PARAM_INT);
-  $stmt->bindValue(':description', $parkdescr, PDO::PARAM_STR);
-  $stmt->execute();
+  
+  try{
+    $parkname = Input::getString('name');
+  } catch (Exception $e) {
+    array_push($errorMessages, $e->getMessage());
+    // echo 'An error occurred: ' . $e->getMessage() . PHP_EOL;
+  }
 
+  try{
+    $parklocation = Input::getString('location');
+  } catch (Exception $e) {
+    array_push($errorMessages, $e->getMessage());
+  }
+  
+  try{
+    $parkdate = Input::getDate('date_established');
+  } catch (Exception $e) {
+    array_push($errorMessages, $e->getMessage());
+  }
+
+  try{
+    $parksize = Input::getNumber('area_in_acres');
+   } catch  (Exception $e) {
+     array_push($errorMessages, $e->getMessage());
+   }  
+  
+  try{
+    $parkdescr = Input::getString('description');
+   } catch  (Exception $e) {
+     array_push($errorMessages, $e->getMessage());
+   }
+   
+   
+  
+  if (empty($errorMessages))
+  {
+    $checkrow = 'SELECT id FROM national_parks WHERE name = :name';
+    $stmt = $dbc->prepare($checkrow);
+    $stmt->bindValue(':name', $parkname, PDO::PARAM_STR);
+    $stmt->execute();
+    $checkedID = $stmt->fetchColumn();
+
+    if ($checkedID == null) 
+    {
+      $insert = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+      $stmt = $dbc->prepare($insert);
+      $stmt->bindValue(':name', $parkname, PDO::PARAM_STR);
+      $stmt->bindValue(':location', $parklocation, PDO::PARAM_STR);
+      $stmt->bindValue(':date_established', $parkdate->format('Y-m-d'), PDO::PARAM_STR); 
+      $stmt->bindValue(':area_in_acres', $parksize, PDO::PARAM_INT);
+      $stmt->bindValue(':description', $parkdescr, PDO::PARAM_STR);
+      $stmt->execute();
+    } else {
+      $message = "This Park already exists!";
+      echo "<script type='text/javascript'>alert('$message');</script>";
+    }
+  }
 }
 
 $query = "SELECT * FROM national_parks LIMIT :limit OFFSET :offset";
@@ -44,6 +88,7 @@ $stmt->execute();
 $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $totalnumberOfParks = $dbc->query("SELECT COUNT(*) FROM national_parks")->fetchColumn();
 $totalnumberOfPages = ceil($totalnumberOfParks / $limit);
+
 
 ?>
 
@@ -104,7 +149,7 @@ $totalnumberOfPages = ceil($totalnumberOfParks / $limit);
   	<li><h4><?= 'Location - ' . ' ' .  $park['location']?></h4></li>
   	<li><h4><?= 'Date established - ' . ' ' . $park['date_established']?></h4></li>
   	<li><h4><?= 'Acres in km2 - ' . ' ' . $park['area_in_acres']?></h4></li>
-    <li><p><?= 'Describtion - ' . ' ' . $park['description']?></p></li>
+    <li><p><?= 'Description - ' . ' ' . $park['description']?></p></li>
 	</ul> 
  <?php endforeach; ?>
 
@@ -114,11 +159,14 @@ $totalnumberOfPages = ceil($totalnumberOfParks / $limit);
  <?php if($page < $totalnumberOfPages): ?>
   <a href="?page=<?= $page +1 ?>">Next Page</a> 
  <?php endif; ?>
+<?php if($page > $totalnumberOfPages): ?>
+  <?php header("Location: //codeup.dev/national_parks.php"); ?>
+  <?php die(); ?>
+  <?php endif; ?>
 
 
  <!-- Trigger/Open The Modal -->
 <button id="myBtn">Add a new Park!</button>
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -127,11 +175,16 @@ $totalnumberOfPages = ceil($totalnumberOfParks / $limit);
     <span class="close">x</span>
     <form method="POST" action="national_parks.php">
         <h5>To add new parks fill out form below:</h5>
+        <?php foreach ($errorMessages as $error): ?>
+        <?php echo "<script type='text/javascript'>alert('$error');</script>"; ?>
+        <?php echo "<script type='text/javascript'>window.history.go(-1);</script>"; ?>
+        <?php echo "<script type='text/javascript'>$('#myModal').modal('show');</script>"; ?> 
+        <?php endforeach; ?>  
         <input type="text" id="park_name" name="name" placeholder="Enter_Name">
         <input type="text" id="park_location" name="location" placeholder="Enter_Location">
         <input type="date" id="park_established" name="date_established" placeholder="Enter when it was established">
         <input type="text" id="park_acres" name="area_in_acres" placeholder="Enter_acres in km2">
-        <textarea type="text" name="description" rows="4" cols="50">Enter Describtion!</textarea>
+        <textarea type="text" name="description" rows="4" cols="50">Enter Description!</textarea>
         <input type="submit" value="add">
   </form>
   </div>
