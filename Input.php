@@ -72,7 +72,7 @@ public static function getString($key)
 
 public static function getNumber($key)
 {
-    $value = self::get($key);
+    $value = self::get($key, $max, $min);
     if(!is_numeric($value) || $value == null) {
         throw new Exception("THE VALUE $key NEEDS TO BE NUMERIC!!!");
     }

@@ -1,0 +1,393 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mar",
+				"markerglobal"
+			],
+			[
+				"marker",
+				"markerglobal"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"set",
+				"setMapOnAll"
+			],
+			[
+				"map",
+				"mapOptions"
+			],
+			[
+				"lng",
+				"lngCo"
+			],
+			[
+				"ad",
+				"address"
+			],
+			[
+				"get",
+				"getLocation"
+			],
+			[
+				"ma",
+				"mapOptions"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"weather",
+				"weatherData"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"wea",
+				"weatherData"
+			],
+			[
+				"data",
+				"dataInput"
+			],
+			[
+				"w",
+				"weatherData"
+			],
+			[
+				"bu",
+				"buildContent"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"t",
+				"title"
+			],
+			[
+				"di",
+				"div	Tag"
+			],
+			[
+				"al",
+				"align-items"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"content",
+				"contentString"
+			],
+			[
+				"a",
+				"append"
+			],
+			[
+				"ins",
+				"insertProducts"
+			],
+			[
+				"re",
+				"recievedData"
+			],
+			[
+				"he",
+				"HeMan"
+			],
+			[
+				"btn",
+				"btn-hide"
+			],
+			[
+				"ani",
+				"animate-box"
+			],
+			[
+				"i",
+				"img	Tag"
+			],
+			[
+				"show",
+				"showIt"
+			],
+			[
+				"sh",
+				"showIt"
+			],
+			[
+				"to",
+				"toggleClass"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"in",
+				"invisible"
+			],
+			[
+				"h",
+				"href	Attr"
+			],
+			[
+				"g",
+				"goCodeup"
+			],
+			[
+				"Tex",
+				"TextBox1"
+			],
+			[
+				"l",
+				"li	Tag"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"conten",
+				"contentText"
+			],
+			[
+				"ti",
+				"title	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 123.0,
+		"last_filter": "Snippet: ",
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: jquery"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 431.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"install",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/Testpage.html",
+		"/etc/hosts",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/weather_map.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/ajax_blog.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/temTest.html",
+		"/Users/mainuser/Library/Application Support/Sublime Text 3/Packages/User/iife.sublime-snippet",
+		"/Users/mainuser/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/mainuser/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/mainuser/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/data/inventory.json",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/ajax_store.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/data/blog.json",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/intro-bootstrap.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/my_first_form.php",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/ajax_blog.php",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css/myToolStore.css",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css/resume.css",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/jquery_faq.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/animate_exercise.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/More-Animation.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css/bootstrap-theme.css",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/js/if_else.js",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/jquery_exercises.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/hello_world.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/dom-query-js.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/iterating_arrays_js.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/split_join_arrays_js.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css_selectors.php",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css/selectors.css",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/Jquery.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/JustForGiggles.html",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css/hello_world.css",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css/site.css",
+		"/Users/mainuser/vagrant-lamp/sites/codeup.dev/public/css_intro.html",
+		"/Users/mainuser/Library/Application Support/Sublime Text 3/Packages/User/jquery.sublime-snippet",
+		"/Users/mainuser/Documents/test.html"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"gmarker",
+			"table",
+			"invisible"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "README.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 325.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="ike">
+<head>
+	<title>Angular JS Demo</title>
+</head>
+<body>
+
+
+<h1>{{ "Hello Codeup!" | uppercase }}</h1>
+<p>{{ (5 * 3 + 7) / 11 |number:3 }}</p>
+
+<ul>
+    <li ng-show="1 < 2">One is Less Than Two</li>
+    <li ng-show="1 <= 2">One is Less Than or Equal to Two</li>
+    <li ng-show="1 == 2">One is Equal to Two</li>
+    <li ng-show="1 >= 2">One is Greater Than or Equal to Two</li>
+    <li ng-show="1 > 2">One is Greater Than Two</li>
+</ul>
+
+<ol>
+    <li ng-repeat="letter in ['A', 'B', 'C', 'D', 'E', 'F']">{{ letter }}</li>
+</ol>
+
+<ul>
+    <li ng-repeat="num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" ng-if="num % 2 == 0">
+        {{ num }} is even!
+    </li>
+</ul>
+
+<img ng-src="{{ '/img/pasta.jpg' }}">
+
+
+<script src="/js/angular.min.js"></script>
+<script src="/js/IkeModul.js"></script>
+
+</body>
+</html>
